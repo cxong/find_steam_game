@@ -50,3 +50,16 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Visual studio
+*.suo
+*.vcxproj*
+*.sln
+.vs/
+*.dir/
+x64/
+
+# CMake
+*.cmake
+CMakeCache.txt
+CMakeFiles/
