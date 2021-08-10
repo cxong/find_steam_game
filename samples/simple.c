@@ -12,9 +12,11 @@ int main(int argc, char *argv[])
 	}
 
 	const char *game_name = argv[1];
-
-	const bool exists = fsg_game_exists(game_name);
-	printf("%s exists? %s\n", game_name, exists ? "yes" : "no");
+	char buf[4096];
+	fsg_get_steam_game_path(buf, game_name);
+	printf("Steam: %s found at %s\n", game_name, buf);
+	fsg_get_gog_game_path(buf, game_name);
+	printf("GOG: %s found at %s\n", game_name, buf);
 
 bail:
 	return ret;

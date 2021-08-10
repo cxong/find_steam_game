@@ -39,6 +39,7 @@ extern "C"
 #endif
 
 #ifdef _MSC_VER
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <winerror.h>
 #include <winreg.h>
@@ -72,33 +73,41 @@ extern "C"
 #endif
 
 	_FSG_FUNC
-	bool fsg_game_exists(const char *name)
+	void fsg_get_steam_game_path(char *out, const char *name)
 	{
+		out[0] = '\0';
 #ifdef _MSC_VER
-		char buf[4096];
-		buf[0] = '\0';
 		_query_reg_key(
-			buf, HKEY_CURRENT_USER, "Software\\Valve\\Steam", "SteamPath");
-		if (strlen(buf) == 0)
+			out, HKEY_CURRENT_USER, "Software\\Valve\\Steam", "SteamPath");
+		if (strlen(out) == 0)
 		{
 			_query_reg_key(
-				buf, HKEY_LOCAL_MACHINE, "Software\\Valve\\Steam",
+				out, HKEY_LOCAL_MACHINE, "Software\\Valve\\Steam",
 				"InstallPath");
-			if (strlen(buf) == 0)
-				return false;
+			if (strlen(out) == 0)
+				return;
 		}
-		strcat(buf, "/SteamApps/common/");
-		strcat(buf, name);
+		strcat(out, "/SteamApps/common/");
+		strcat(out, name);
 
 		tinydir_dir dir;
-		if (tinydir_open(&dir, buf) != 0)
+		if (tinydir_open(&dir, out) != 0)
 		{
-			return false;
+			out[0] = '\0';
+			return;
 		}
 		tinydir_close(&dir);
-		return true;
-#else
-	return false;
+#endif
+	}
+
+	_FSG_FUNC
+	void fsg_get_gog_game_path(char *out, const char *app_id)
+	{
+		out[0] = '\0';
+#ifdef _MSC_VER
+		char buf[4096];
+		sprintf(buf, "Software\\Wow6432Node\\GOG.com\\Games\\%s", app_id);
+		_query_reg_key(out, HKEY_LOCAL_MACHINE, buf, "Path");
 #endif
 	}
 
