@@ -10,7 +10,7 @@ char buf[4096];
 fsg_get_steam_game_path(buf, "Wolfenstein 3D");
 printf("Steam: %s found at %s\n", "Wolfenstein 3D", buf);
 
-// Prints: Steam: Wolfenstein 3D found at c:/program files (x86)/steam/SteamApps/common/Celeste
+// Prints: Steam: Wolfenstein 3D found at c:/program files (x86)/steam/SteamApps/common/Wolfenstein 3D
  ```
 
 ## Support

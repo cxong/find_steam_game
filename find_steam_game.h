@@ -21,14 +21,14 @@ SOFTWARE.
 */
 #pragma once
 
-#include <tinydir.h>
-
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
 #include <stdbool.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #ifdef _MSC_VER
 #define _FSG_FUNC static __inline
@@ -90,13 +90,12 @@ extern "C"
 		strcat(out, "/SteamApps/common/");
 		strcat(out, name);
 
-		tinydir_dir dir;
-		if (tinydir_open(&dir, out) != 0)
+		struct stat info;
+		if (stat(out, &info) != 0 || !(info.st_mode & S_IFDIR))
 		{
 			out[0] = '\0';
 			return;
 		}
-		tinydir_close(&dir);
 #endif
 	}
 
