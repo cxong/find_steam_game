@@ -17,5 +17,5 @@ printf("Steam: %s found at %s\n", "Wolfenstein 3D", buf);
 
 | Store      | Windows | Linux | macOS |
 | ----------- | ----------- |----------- |----------- |
-| Steam      | ✔ (folder name) | ❌ |  ❌ | 
+| Steam      | ✔ (folder name) | ✔ |  ❌ | 
 | GOG   |  ✔ (game id) | ❌ |  ❌ |
