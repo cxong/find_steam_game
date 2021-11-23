@@ -1,4 +1,6 @@
 # find_steam_game
+[![CMake](https://github.com/cxong/find_steam_game/actions/workflows/cmake.yml/badge.svg)](https://github.com/cxong/find_steam_game/actions/workflows/cmake.yml)
+
 Cross platform C library for finding games installed from platforms like steam
 
 ## Usage
