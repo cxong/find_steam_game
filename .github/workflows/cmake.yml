@@ -23,8 +23,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Install GCC
+      if: matrix.CC == 'gcc'
+      uses: egor-tensin/setup-gcc@v1
+      with:
+        version: ${{ matrix.gcc_version }}
 
     - name: Configure CMake
+      env:
+        CC: ${{ matrix.CC }}
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} samples
 
     - name: Build
