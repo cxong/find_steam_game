@@ -263,8 +263,10 @@ extern "C"
 			strcpy(out, buf);
 			return;
 		}
-#endif
+#else
 		(void)app_id;
+		(void)buf;
+#endif
 	}
 
 #ifdef __cplusplus
