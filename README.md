@@ -20,4 +20,6 @@ printf("Steam: %s found at %s\n", "Wolfenstein 3D", buf);
 | Store      | Windows | Linux | macOS |
 | ----------- | ----------- |----------- |----------- |
 | Steam      | ✔ (folder name) | ✔ |  ❌ | 
-| GOG   |  ✔ (game id) | ❌ |  ❌ |
+| GOG   |  ✔ (game id) | ❌ |  ✔ (app name) |
+
+- macOS GOG doesn't support custom installation locations; it only looks at `/Applications`

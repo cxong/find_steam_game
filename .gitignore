@@ -63,3 +63,12 @@ x64/
 *.cmake
 CMakeCache.txt
 CMakeFiles/
+CMakeScripts/
+Debug/
+
+# VSCode
+.vscode/
+
+# Xcode
+build/
+*.xcodeproj/

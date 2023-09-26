@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5)
 
-project(find_steam_game)
+project(find_steam_game C)
 
 INCLUDE_DIRECTORIES(..)
 

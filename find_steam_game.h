@@ -252,10 +252,17 @@ extern "C"
 	void fsg_get_gog_game_path(char *out, const char *app_id)
 	{
 		out[0] = '\0';
-#if defined(_WIN64) || defined(_WIN32)
 		char buf[_FSG_PATH_MAX];
+#if defined(_WIN64) || defined(_WIN32)
 		sprintf(buf, "Software\\Wow6432Node\\GOG.com\\Games\\%s", app_id);
 		_fsg_query_reg_key(out, HKEY_LOCAL_MACHINE, buf, "Path");
+#elif __APPLE__
+		sprintf(buf, "/Applications/%s.app/Contents/Resources", app_id);
+		if (_fsg_dir_exists(buf))
+		{
+			strcpy(out, buf);
+			return;
+		}
 #endif
 		(void)app_id;
 	}
