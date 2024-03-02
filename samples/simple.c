@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 	int ret = 0;
 	if (argc < 2)
 	{
-		perror("Usage: program <name_of_game>");
+		perror("Usage: program <name_of_game>\n");
 		ret = 1;
 		goto bail;
 	}
