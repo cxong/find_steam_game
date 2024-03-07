@@ -23,3 +23,7 @@ printf("Steam: %s found at %s\n", "Wolfenstein 3D", buf);
 | GOG   |  ✔ (game id) | ❌ |  ✔ (app name) |
 
 - macOS GOG doesn't support custom installation locations; it only looks at `/Applications`
+
+## Resources
+
+GOG Game ID List: https://gogapidocs.readthedocs.io/en/latest/gameslist.html
